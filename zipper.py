@@ -20,7 +20,9 @@ def zip_it(args: Namespace) -> None:
 
 
 def unzip_it(args: Namespace) -> None:
-    pass
+    path = Path(args.path)
+    with ZipFile(path, "r") as zip_file:
+        zip_file.extractall(path.parent)
 
 
 def path_type(path_like: str) -> Path:
